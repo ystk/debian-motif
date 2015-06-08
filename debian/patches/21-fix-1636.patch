@@ -1,0 +1,29 @@
+Description: Fix for upstream bug #1636
+ This patch fixes a segfault in XmList when left-shift,
+ left-button click on list item.
+Author: Oleksiy Chernyavskyy <ochern@ics.com>
+Origin: upstream, http://bugs.motifzone.net/show_bug.cgi?id=1636
+Bug: http://bugs.motifzone.net/show_bug.cgi?id=1636
+Last-Update: 2014-08-20
+--- a/lib/Xm/List.c
++++ b/lib/Xm/List.c
+@@ -78,6 +78,7 @@
+ #define FIX_1390	1
+ #define FIX_1365	1
+ #define FIX_1362	1
++#define FIX_1636    1
+ 
+ #define	BUTTONDOWN	1
+ #define	SHIFTDOWN	2
+@@ -8514,6 +8515,11 @@
+ 
+   if (lw->list.items && (lw->list.itemCount > 0))
+     {
++#ifdef FIX_1636
++      XmListDeselectAllItems(w);
++      SetSelectionParams(lw);
++#endif
++
+       Dimension old_max_height = lw->list.MaxItemHeight;
+ 
+       DrawHighlight(lw, lw->list.CurrentKbdItem, FALSE);

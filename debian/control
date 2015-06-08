@@ -1,0 +1,171 @@
+Source: motif
+Section: x11
+Priority: optional
+Build-Depends: byacc,
+               debhelper (>= 9),
+               dh-autoreconf,
+               dh-exec,
+               flex (>= 2.5.36),
+               libfontconfig1-dev,
+               libjpeg-dev,
+               libpng-dev,
+               libsm-dev,
+               libx11-dev,
+               libxaw7-dev,
+               libxext-dev,
+               libxft-dev,
+               libxmu-dev,
+               libxt-dev,
+               xbitmaps
+Maintainer: Graham Inggs <graham@nerve.org.za>
+Uploaders: Paul Gevers <elbrus@debian.org>
+Standards-Version: 3.9.6
+Homepage: http://motif.ics.com/
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/motif.git
+Vcs-Git: git://anonscm.debian.org/collab-maint/motif.git
+
+Package: libmotif-common
+Architecture: all
+Section: libs
+Multi-Arch: foreign
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: ${misc:Pre-Depends}, x11-common (>= 1:7.0.0)
+Breaks: libmotif3 (<< 2.3.3-2), libmotif4 (<< 2.3.4)
+Replaces: libmotif3 (<< 2.3.3-2), libmotif4 (<< 2.3.4)
+Description: Motif - common files
+ Motif is the industry standard GUI component toolkit for *NIX.
+ .
+ This package contains Motif common bindings and bitmaps.
+
+Package: libmrm4
+Architecture: any
+Section: libs
+Multi-Arch: same
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: x11-common (>= 1:7.0.0), ${misc:Pre-Depends}
+Breaks: libmotif3 (<< 2.3.3-2), libmotif4 (<< 2.3.4)
+Replaces: libmotif3 (<< 2.3.3-2), libmotif4 (<< 2.3.4)
+Description: Motif - MRM (Motif Resource Manager) shared library
+ Motif is the industry standard GUI component toolkit for *NIX.
+ .
+ This package contains the MRM (Motif Resource Manager) shared library.
+
+Package: libuil4
+Architecture: any
+Section: libs
+Multi-Arch: same
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: x11-common (>= 1:7.0.0), ${misc:Pre-Depends}
+Breaks: libmotif3 (<< 2.3.3-2), libmotif4 (<< 2.3.4)
+Replaces: libmotif3 (<< 2.3.3-2), libmotif4 (<< 2.3.4)
+Description: Motif - UIL (User Interface Language) shared library
+ Motif is the industry standard GUI component toolkit for *NIX.
+ .
+ This package contains the UIL (User Interface Language) shared library.
+
+Package: libxm4
+Architecture: any
+Section: libs
+Multi-Arch: same
+Depends: libmotif-common (= ${source:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends}
+Pre-Depends: x11-common (>= 1:7.0.0), ${misc:Pre-Depends}
+Breaks: libmotif3 (<< 2.3.3-2), libmotif4 (<< 2.3.4)
+Replaces: libmotif3 (<< 2.3.3-2), libmotif4 (<< 2.3.4)
+Description: Motif - X/Motif shared library
+ Motif is the industry standard GUI component toolkit for *NIX.
+ .
+ This package contains the X/Motif shared library.
+
+Package: uil
+Architecture: any
+Section: devel
+Multi-Arch: foreign
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Breaks: libmotif-dev (<< 2.3.4)
+Replaces: libmotif-dev (<< 2.3.4)
+Conflicts: lesstif-bin
+Description: Motif - UIL (User Interface Language) compiler
+ Motif is the industry standard GUI component toolkit for *NIX.
+ .
+ This package contains uil, the User Interface Language compiler.
+
+Package: libmotif4-dbg
+Architecture: any
+Section: debug
+Priority: extra
+Multi-Arch: same
+Depends: libmrm4 (= ${binary:Version}),
+         libuil4 (= ${binary:Version}),
+         libxm4 (= ${binary:Version}),
+         ${misc:Depends}
+Conflicts: lesstif2-dbg
+Description: Motif - debugging symbols
+ Motif is the industry standard GUI component toolkit for *NIX.
+ .
+ This package contains the debugging symbols.
+
+Package: libmotif-dev
+Architecture: any
+Section: libdevel
+Multi-Arch: same
+Depends: libmrm4 (= ${binary:Version}),
+         libuil4 (= ${binary:Version}),
+         libxm4 (= ${binary:Version}),
+         uil (= ${binary:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends}
+Conflicts: lesstif-bin, lesstif-dev, lesstif-doc, lesstif2-dev
+Description: Motif - development files
+ Motif is the industry standard GUI component toolkit for *NIX.
+ .
+ This package provides everything needed for developing Motif
+ applications, including header files, static libraries and the API
+ manual pages.
+
+Package: mwm
+Architecture: any
+Multi-Arch: foreign
+Depends: menu, ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: x11-common (>= 1:7.0.0)
+Breaks: motif-clients (<< 2.3.4)
+Replaces: motif-clients (<< 2.3.4)
+Conflicts: lesstif-bin
+Provides: motif-clients, x-window-manager
+Description: Motif Window Manager
+ Motif is the industry standard GUI component toolkit for *NIX.
+ .
+ This package contains the Motif Window Manager, which has a clear but
+ classical appearance. It is accompanied by xmbind, which is used to
+ configure virtual key/mouse-bindings for Motif.
+
+Package: motif-clients
+Architecture: all
+Multi-Arch: foreign
+Section: oldlibs
+Priority: extra
+Depends: mwm, ${misc:Depends}, ${shlibs:Depends}
+Description: Motif Window Manager (transitional package)
+ This is a transitional package as the original package is renamed to
+ mwm. It can safely be removed.
+
+Package: libmotif4
+Architecture: any
+Section: oldlibs
+Priority: extra
+Multi-Arch: same
+Depends: libmrm4, libuil4, libxm4, ${misc:Depends}, ${shlibs:Depends}
+Description: Motif - shared libraries (transitional package)
+ This is a transitional package as the original package is split into three
+ independent packages libmrm4, libuil4 and libxm4. It can safely be removed.
+
+Package: libmotif3
+Architecture: any
+Section: oldlibs
+Priority: extra
+Multi-Arch: same
+Depends: libmrm4, libuil4, libxm4, ${misc:Depends}, ${shlibs:Depends}
+Description: Motif - shared libraries (transitional package)
+ This is a transitional package as the new packages libmrm4, libuil4 and
+ libxm4 are binary compatible with libmotif3. It can safely be removed.
