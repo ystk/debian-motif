@@ -1,3 +1,13 @@
+motif (2.3.4-6+deb8u1) jessie-proposed-updates; urgency=medium
+
+  * Disable fix for upstream bug #1565 which caused segfaults in
+    ddd and xpdf (Closes: #781995). 
+  * Remove XmForceGrabKeyboard@Base from d/libxm4.symbols
+    which was introduced by upstream's updated fix applied in
+    motif 2.3.4-5 (Closes: #782678).
+
+ -- Graham Inggs <graham@nerve.org.za>  Fri, 19 Jun 2015 10:55:55 +0200
+
 motif (2.3.4-6) unstable; urgency=medium
 
   * Bump standards-version to 3.9.6 (no changes).

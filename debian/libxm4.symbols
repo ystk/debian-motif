@@ -257,7 +257,6 @@ libXm.so.4 libxm4 #MINVER#
  XmFontListInitFontContext@Base 2.3.4
  XmFontListNextEntry@Base 2.3.4
  XmFontListRemoveEntry@Base 2.3.4
- XmForceGrabKeyboard@Base 2.3.4-5~
  XmGetAtomName@Base 2.3.4
  XmGetColorCalculation@Base 2.3.4
  XmGetColors@Base 2.3.4
